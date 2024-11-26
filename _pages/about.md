@@ -6,12 +6,8 @@ redirect_from:
   - /about/
   - /about.html
 ---
-Central South University
+I am a 3th students at Central South University, major in Automation.
 
-A data-driven personal website
-======
-
-
-Getting started
-======
+# Current Research Interests
+Diffusion Policy, ACT
 
