@@ -6,10 +6,10 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Lorem ipsum"
-description              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. "
-repository               : "RayeRen/acad-homepage.github.io"
-google_scholar_stats_use_cdn : true
+title                    : "Shouzheng Wang"
+description              : "undergraduate student at School of Automation, Central South University. Focusing on Embodied AI and Robotics."
+repository               : "ShouZhengAI.github.io"
+google_scholar_stats_use_cdn : false
 
 # google analytics
 google_analytics_id      :  # get google_analytics_id from https://analytics.google.com/analytics/
@@ -21,7 +21,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "王守政   Shouzheng Wang"
+  name             : "王守政 \n Shouzheng Wang"
   avatar           : "images/profile1.png"
   bio              : "Central South University"
   location         : "Changsha, China"
