@@ -21,7 +21,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Shouzheng Wang 王守政"
+  name             : "王守政   Shouzheng Wang"
   avatar           : "images/profile1.png"
   bio              : "Central South University"
   location         : "Changsha, China"
@@ -37,7 +37,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : # e.g., "github username"
+  github           : "ShouZhengAI"
   google_plus      :
   keybase          :
   instagram        :
