@@ -5,13 +5,13 @@
 .archive {
   margin-bottom: 2em;
 
-  @include breakpoint($medium) {
-    @include span(12 of 12);
-  }
-
   @include breakpoint($large) {
-    @include span(10 of 12 last);
-    @include prefix(0.5 of 12);
+    flex: 1 1 0%;
+    min-width: 0;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
   }
 
   a {
