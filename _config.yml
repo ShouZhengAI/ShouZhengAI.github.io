@@ -25,10 +25,11 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Shouzheng Wang"
+  name_cn          : "王守政"
   pronouns         : # example: "she/her"  
-  bio              : # "Short biography for the left-hand sidebar"
+  bio              : "Researcher in Artificial Intelligence & Deep Learning"
   location         : # "Earth"
-  employer         : # "Red Brick University"
+  employer         : # "University / Institute"
   uri              : # URL
   email            : "szwang.scholar@gmail.com" 
 
