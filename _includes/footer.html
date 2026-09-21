@@ -1,9 +1,10 @@
 {% include base_path %}
 
 <div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}, {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>. &bull; Site last updated {{ "now" | date: '%Y-%m-%d' }}, <a href="/sitemap/" style="text-transform: uppercase;">{{ site.data.ui-text[site.locale].site_map | default: "Sitemap" }}</a>
+  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>.
 </div>
 
+{% comment %}
 {% if site.author.github or site.author.bitbucket or site.atom_feed.hide != true %}
 <div class="page__footer-follow">
   <ul class="social-icons">
@@ -22,3 +23,4 @@
   </ul>
 </div>
 {% endif %}
+{% endcomment %}

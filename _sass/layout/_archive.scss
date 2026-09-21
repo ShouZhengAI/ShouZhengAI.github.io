@@ -40,8 +40,19 @@
 }
 
 .archive__item-title {
-  margin-bottom: 0.25em;
-  font-family: $sans-serif-narrow;
+  margin-top: 0.4em; /* 覆盖默认 h2 的巨大上边距 */
+  margin-bottom: 0.4em; /* 减小下边距 */
+  font-family: 'KingHwaOldSong', 'LXGW WenKai TC', 'Songti SC', 'STSong', serif; /* 完全匹配“王守政”的字体 */
+  font-weight: 500; /* 采用偏细/中等的字重，避免过粗显得笨重 */
+  font-size: 1.15rem; /* 调整字号，让它看起来更精致 */
+  color: var(--global-masthead-link-color); /* 使用同样的深色 */
+  transition: transform 0.2s ease-in-out; /* 添加平滑动画效果 */
+
+  a {
+    text-decoration: none; /* 去除默认下划线让界面更清爽 */
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+  }
 
   a + a {
     opacity: 0.5;
@@ -52,7 +63,7 @@
 .page__content {
 
   .archive__item-title {
-    margin-top: 1em;
+    margin-top: 0.4em; /* 减小间距 */
     border-bottom: none;
   }
 }
@@ -80,7 +91,10 @@
   }
 
   .archive__item-title {
-    text-decoration: underline;
+    transform: translateX(10px); /* 悬浮时向右产生动态平移 */
+    a {
+      color: $info-color; /* 悬浮时字体颜色变亮/变色，这里使用主题的 info-color */
+    }
   }
 }
 

@@ -11,3 +11,10 @@ end
 
 gem 'github-pages'
 gem 'connection_pool', '2.5.0'
+
+gem "csv", "~> 3.3"
+
+gem "bigdecimal", "~> 4.1"
+
+gem "base64", "~> 0.3.0"
+gem "mutex_m", "~> 0.3.0"
