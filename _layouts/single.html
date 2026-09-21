@@ -83,9 +83,9 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% if page.share %}{% include social-share.html %}{% endif %}
+      {% comment %}{% if page.share %}{% include social-share.html %}{% endif %}{% endcomment %}
 
-      {% include post_pagination.html %}
+      {% comment %}{% include post_pagination.html %}{% endcomment %}
     </div>
 
     {% if site.comments.provider and page.comments %}
@@ -94,6 +94,7 @@ layout: default
   </article>
 
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
+  {% comment %}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
       {% if site.data.ui-text[site.locale].related_label %}
@@ -106,4 +107,5 @@ layout: default
       </div>
     </div>
   {% endif %}
+  {% endcomment %}
 </div>
