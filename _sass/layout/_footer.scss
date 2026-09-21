@@ -15,6 +15,8 @@
   clear: both;
   position: relative;
   border-top: 1px solid var(--global-border-color);
+  flex-shrink: 0;
+  z-index: 10;
 
   footer {
     @include clearfix;
