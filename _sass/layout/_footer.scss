@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FOOTER
+   FOOTER (Narrow, sleek, natural bottom document flow)
    ========================================================================== */
 
 .page__footer {
@@ -7,33 +7,27 @@
   background-color: var(--global-footer-bg-color);
   color: var(--global-text-color-light);
 
-  float: left;
+  float: none;
   margin-left: 0;
   margin-right: 0;
-  margin-top: 3em;
+  margin-top: auto;
   width: 100%;
   clear: both;
-
-  /* keep footer in normal document flow so custom widgets do not overlap content */
-  height: auto;
-
-  /* keep the footer on the bottom of the page */
-  position: fixed;
-  bottom: 0;
-
-  -webkit-animation: intro 0.3s both;
-          animation: intro 0.3s both;
-  -webkit-animation-delay: 0.45s;
-          animation-delay: 0.45s;
-  border-top: 1px solid var(--global-dark-border-color);
+  position: relative;
+  border-top: 1px solid var(--global-border-color);
 
   footer {
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em;
+    margin-top: 0;
     max-width: 100%;
-    padding: 0 1em 1em;
+    padding: 0.4em 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -46,6 +40,7 @@
 
     &:hover {
       text-decoration: underline;
+      color: var(--global-link-color-hover);
     }
   }
 
@@ -57,42 +52,41 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* don't pin the footer on mobile devices */
-  .page__footer {
-    position: relative;
-    bottom: auto;
-  }
-}
-
 .page__footer-copyright {
   font-family: $global-font-family;
-  font-size: $type-size-7;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .page__footer-follow {
+  margin: 0;
+
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   li {
-    display: inline-block;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
     font-family: $sans-serif-narrow;
-    font-size: $type-size-6;
+    font-size: 0.78rem;
     text-transform: uppercase;
   }
 
   li + li:before {
     content: "";
-    padding-right: 5px;
+    padding-right: 0;
   }
 
   a {
-    padding-right: 10px;
+    padding-right: 2px;
     font-weight: bold;
   }
 
