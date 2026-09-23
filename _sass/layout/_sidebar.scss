@@ -75,12 +75,32 @@
   }
 }
 
+// Keep the article outline visible while the reader scrolls through a post.
+.sidebar__right.sticky {
+  @include breakpoint($large) {
+    position: sticky;
+    top: 90px;
+    flex: 0 0 240px;
+    width: 240px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+
+  @include breakpoint($x-large) {
+    flex-basis: 260px;
+    width: 260px;
+  }
+}
+
 
 /*
    Table of contents
    ========================================================================== */
 
 .toc {
+  font-family: $global-font-family;
+  text-transform: none;
+  letter-spacing: normal;
   background-color: var(--global-bg-color);
   border: 1px solid var(--global-border-color);
   border-radius: $border-radius;
@@ -89,7 +109,7 @@
 
   .nav__title {
     color: var(--global-text-color);
-    font-size: $type-size-6;
+    font-size: 1rem;
     background: transparent;
     border: 0;
     padding: 0;
@@ -106,9 +126,9 @@
       display: block;
       padding: 0.25rem 0;
       color: var(--global-text-color);
-      font-size: $type-size-7;
+      font-size: 0.9em;
       font-weight: normal;
-      line-height: 1.5;
+      line-height: 1.65;
       border-bottom: 0;
 
       &:hover {

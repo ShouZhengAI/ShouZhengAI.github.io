@@ -143,6 +143,102 @@ $(document).ready(function () {
 
   // If the user hasn't chosen a theme, follow the OS preference
   setTheme();
+
+  // Add a copy action to article code blocks while preserving their line breaks.
+  document.querySelectorAll('.page--post div.highlighter-rouge, .page--post figure.highlight').forEach(function (block) {
+    const code = block.querySelector('pre > code');
+    if (!code || code.classList.contains('language-mermaid') || code.classList.contains('language-plotly')) {
+      return;
+    }
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'code-copy-button';
+    button.textContent = '复制';
+    button.setAttribute('aria-label', '复制代码');
+    block.appendChild(button);
+
+    let resetTimer;
+    button.addEventListener('click', async function () {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(code.textContent);
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = code.textContent;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand('copy');
+          textarea.remove();
+          if (!copied) throw new Error('Clipboard copy failed');
+        }
+
+        button.textContent = '已复制';
+        button.setAttribute('aria-label', '代码已复制');
+      } catch (error) {
+        button.textContent = '复制失败';
+        button.setAttribute('aria-label', '复制失败');
+      }
+
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        button.textContent = '复制';
+        button.setAttribute('aria-label', '复制代码');
+      }, 2000);
+    });
+  });
+
+  // Build the optional table of contents from the rendered article headings.
+  document.querySelectorAll('.toc__menu').forEach(function (toc) {
+    const article = document.querySelector('.page__content');
+    if (!article) {
+      return;
+    }
+
+    const headings = Array.from(article.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'));
+    const stack = [{ level: 0, list: toc }];
+
+    headings.forEach(function (heading, index) {
+      const level = Number(heading.tagName.substring(1));
+      while (stack.length > 1 && level <= stack[stack.length - 1].level) {
+        stack.pop();
+      }
+
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '#' + heading.id;
+      link.textContent = heading.textContent;
+      item.appendChild(link);
+      stack[stack.length - 1].list.appendChild(item);
+
+      const nextHeading = headings[index + 1];
+      if (nextHeading && Number(nextHeading.tagName.substring(1)) > level) {
+        const nestedList = document.createElement('ul');
+        nestedList.className = 'toc__menu';
+        item.appendChild(nestedList);
+        stack.push({ level: level, list: nestedList });
+      }
+    });
+
+    if (!headings.length) {
+      toc.closest('.sidebar__right').hidden = true;
+    }
+  });
+
+  // Give wide article tables their own horizontal scroll area.
+  document.querySelectorAll('.page__content table').forEach(function (table) {
+    if (table.parentElement.classList.contains('table-scroll')) {
+      return;
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-scroll';
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+
   window.matchMedia('(prefers-color-scheme: dark)')
         .addEventListener("change", (e) => {
           if (!localStorage.getItem("theme")) {

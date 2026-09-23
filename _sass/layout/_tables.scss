@@ -15,6 +15,37 @@ table {
   }
 }
 
+// Wide article tables remain readable and can be scrolled horizontally on
+// smaller screens instead of forcing every column into a narrow layout.
+.table-scroll {
+  max-width: 100%;
+  margin-bottom: 1em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  table {
+    width: max-content;
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+
+  th,
+  td {
+    min-width: 8rem;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  // Keep the long "包含内容" column readable instead of letting it
+  // expand until the remaining columns become unusably narrow.
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 28ch;
+    min-width: 22ch;
+    max-width: 28ch;
+  }
+}
+
 thead {
   background-color: var(--global-border-color);
   border-bottom: 1px solid var(--global-border-color);

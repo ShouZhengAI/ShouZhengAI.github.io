@@ -23,6 +23,15 @@
     padding-left: 2em;
     padding-right: 2em;
   }
+
+  // Blog posts have both an author rail and a table of contents rail.
+  // Give the reading column enough room instead of constraining it to the
+  // default page container width.
+  &.main--post {
+    @include breakpoint($large) {
+      max-width: 1600px;
+    }
+  }
 }
 
 .page {
@@ -50,7 +59,7 @@
   margin-top: 0;
   line-height: 1;
 
-  & + .page__meta {
+  &+.page__meta {
     margin-top: -0.5em;
   }
 }
@@ -67,7 +76,9 @@
     border-bottom: 1px solid var(--global-border-color);
   }
 
-  p, li, dl {
+  p,
+  li,
+  dl {
     font-size: 1em;
   }
 
@@ -76,8 +87,8 @@
     margin: 0 0 $indent-var;
 
     /* sibling indentation*/
-    @if $paragraph-indent == true {
-      & + p {
+    @if $paragraph-indent ==true {
+      &+p {
         text-indent: $indent-var;
         margin-top: -($indent-var);
       }
@@ -113,9 +124,80 @@
   }
 
   /* blockquote citations */
-  blockquote + .small {
+  blockquote+.small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
+  }
+}
+
+/* Keep blog posts at a comfortable reading width without changing other pages. */
+.page--post {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Lora', 'Noto Serif SC', 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+  font-size: 17px;
+
+  .page__title,
+  .page__content h2,
+  .page__content h3,
+  .page__content h4 {
+    font-family: 'Newsreader', 'Noto Serif SC', 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+    font-weight: 600;
+  }
+
+  .page__title {
+    margin-bottom: 0.5em;
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+
+  .page__post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em 1em;
+    margin-bottom: 2.5em;
+    color: var(--global-text-color-light);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .page__content {
+    line-height: 1.7;
+
+    p {
+      margin-bottom: 1.25em;
+    }
+
+    h2 {
+      margin: 2.1em 0 0.7em;
+      padding: 0;
+      border: 0;
+      font-size: 1.5rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 1.8em 0 0.6em;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    li {
+      margin-bottom: 0.35em;
+    }
+  }
+
+  @include breakpoint($medium) {
+    font-size: 18px;
+
+    .page__title {
+      font-size: 2rem;
+    }
+
+    .page__content h2 {
+      font-size: 1.55rem;
+    }
   }
 }
 
@@ -312,6 +394,7 @@
   transition: $global-transition;
 
   &.disabled {
+
     input,
     button,
     textarea,
