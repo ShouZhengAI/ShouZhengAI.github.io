@@ -31,6 +31,23 @@
     @include breakpoint($large) {
       max-width: 1600px;
     }
+
+    @include breakpoint($x-large) {
+      display: grid;
+      grid-template-columns: minmax(220px, 240px) minmax(0, 760px) minmax(220px, 240px);
+      gap: 2rem;
+      justify-content: center;
+
+      > .sidebar,
+      > .page--post,
+      > .sidebar__right {
+        min-width: 0;
+      }
+
+      > .sidebar__right.sticky {
+        width: auto;
+      }
+    }
   }
 }
 
@@ -132,7 +149,7 @@
 
 /* Keep blog posts at a comfortable reading width without changing other pages. */
 .page--post {
-  max-width: 900px;
+  max-width: 760px;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Lora', 'Noto Serif SC', 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
